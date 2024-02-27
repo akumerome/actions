@@ -16,9 +16,10 @@ jobs:
         run: |
           echo "${{ secrets.PROD_KEY }}" > ~/prod_key.pem
           chmod 600 ~/prod_key.pem
-          cd ${{ github.workspace }}
-          echo "Action desplegant a produccio" > ./web/last_deploy.txt
-          date >> ./web/last_deploy.txt
-          scp -r -o stricthostkeychecking=no -o UserKnownHostsFile=/dev/null -i "~/prod_key.pem" ./web/* ${{ secrets.PROD_USER }}@${{ secrets.PROD_HOST }}:/home/a23alvkumrom/web/a23alvkumrom.daw.inspedralbes.cat/public_html/github_actions/
+          cd ../../web/github-actions
+          npm run build
+          echo "Action desplegant a produccio" > ../web/last_deploy.txt
+          date >> ../web/last_deploy.txt
+          scp -r -o stricthostkeychecking=no -o UserKnownHostsFile=/dev/null -i "~/prod_key.pem" ./github-actions/dist/* ${{ secrets.PROD_USER }}@${{ secrets.PROD_HOST }}:/home/a23alvkumrom/web/a23alvkumrom.daw.inspedralbes.cat/public_html/github_actions/
           
       - run: echo "🍏 This job's status is ${{ job.status }}."
