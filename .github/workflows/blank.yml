@@ -22,6 +22,6 @@ jobs:
           cd ./web/github-actions/
           npm install
           npm run build
-          scp -r -o stricthostkeychecking=no -o UserKnownHostsFile=/dev/null -i "~/prod_key.pem" ./web/* ${{ secrets.PROD_USER }}@${{ secrets.PROD_HOST }}:/home/a23alvkumrom/web/a23alvkumrom.daw.inspedralbes.cat/public_html/github_actions/
+          scp -r -o stricthostkeychecking=no -o UserKnownHostsFile=/dev/null -i "~/prod_key.pem" ./dist/* ${{ secrets.PROD_USER }}@${{ secrets.PROD_HOST }}:/home/a23alvkumrom/web/a23alvkumrom.daw.inspedralbes.cat/public_html/github_actions/
           
       - run: echo "🍏 This job's status is ${{ job.status }}."
