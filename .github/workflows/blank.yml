@@ -16,7 +16,7 @@ jobs:
         run: |
           echo "${{ secrets.PROD_KEY }}" > ~/prod_key.pem
           chmod 600 ~/prod_key.pem
-          cd ../../web/github-actions
+          cd ..\..\web\github-actions
           npm run build
           echo "Action desplegant a produccio" > ../web/last_deploy.txt
           date >> ../web/last_deploy.txt
