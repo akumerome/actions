@@ -7,7 +7,6 @@ export default {
   },
   methods: {
     changeNumber(n) {
-      console.log(n);
       this.message = n;
     },
   },
